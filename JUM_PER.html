@@ -9,10 +9,15 @@
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #0f0f0f;
+      background: #2b0080;
       color: #f0f0f0;
       line-height: 1.6;
+      background-image: url("costume3.png"), url("costume3.png");
+      background-repeat: repeat-y, repeat-y;
+      background-position: left center, right center;
+      background-size: auto;
     }
+
     header {
       display: flex;
       justify-content: space-between;
@@ -23,38 +28,46 @@
       top: 0;
       z-index: 100;
     }
+
     header .logo {
       font-weight: 700;
       font-size: 1.5rem;
       color: #00aaff;
     }
+
     header img {
       height: 50px;
       margin-right: 10px;
     }
+
     nav a {
       color: #00aaff;
       text-decoration: none;
       margin-left: 1.5rem;
       font-weight: 600;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
+
     .hero {
       text-align: center;
       padding: 5rem 1rem 3rem;
       background: linear-gradient(135deg, #00aaff, #0077cc);
       color: #0f0f0f;
     }
+
     .hero h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
     }
+
     .hero p {
       font-size: 1.25rem;
       margin-bottom: 2rem;
     }
+
     .btn {
       background: #0f0f0f;
       color: #00aaff;
@@ -65,15 +78,18 @@
       cursor: pointer;
       transition: background 0.3s, color 0.3s;
     }
+
     .btn:hover {
       background: #00aaff;
       color: #0f0f0f;
     }
+
     section {
       padding: 3rem 1rem;
       max-width: 900px;
       margin: auto;
     }
+
     footer {
       background: #1a1a1a;
       text-align: center;
@@ -81,6 +97,7 @@
       font-size: 0.875rem;
       color: #999;
     }
+
     @media (max-width: 600px) {
       .hero h1 {
         font-size: 2.25rem;
@@ -101,41 +118,35 @@
   <nav>
     <a href="#about">About</a>
     <a href="#features">Features</a>
-    <a href="#buy">Buy</a>
-    <a href="#devlog">Devlog</a>
+    <a href="#demo">Demo</a>
   </nav>
 </header>
 
 <section class="hero">
   <h1>Welcome to JU_MP</h1>
   <p>Play as the little guy who can TELEPORT! A thrilling platformer adventure awaits.</p>
-  <button class="btn" onclick="window.open('https://mariomario6464.itch.io/ju-mp', '_blank')">Buy Now on itch.io</button>
+  <button class="btn" onclick="window.open('https://mariomario6464.itch.io/ju-mp', '_blank')">?? Play the Demo</button>
 </section>
 
 <section id="about">
   <h2>About JU_MP</h2>
-  <p>JU_MP is a platformer game where you control a character with the power to teleport. Navigate challenging levels, avoid obstacles, and discover secrets!</p>
+  <p>JU_MP is a platformer game where you control a character with the power to teleport. Navigate challenging levels, avoid obstacles, and discover secrets! Built originally in Scratch, JU_MP is gearing up for a full release in GameMaker.</p>
 </section>
 
 <section id="features">
   <h2>Features</h2>
   <ul>
-    <li>Teleportation mechanic for unique gameplay</li>
-    <li>Challenging platforming levels</li>
-    <li>Engaging and fun game experience</li>
+    <li>Teleportation mechanic with collision checks and limits</li>
+    <li>Custom animations, sounds, and music</li>
+    <li>Props and polish for a groovy retro feel</li>
+    <li>Playable demo online now!</li>
   </ul>
 </section>
 
-<section id="buy">
-  <h2>Buy JU_MP</h2>
-  <p>Get your copy now on itch.io and start teleporting!</p>
-  <button class="btn" onclick="window.open('https://mariomario6464.itch.io/ju-mp', '_blank')">Buy on itch.io</button>
-</section>
-
-<section id="devlog">
-  <h2>Developer Log</h2>
-  <p>Read about how JU_MP was created, what's coming next, and behind-the-scenes updates!</p>
-  <button class="btn" onclick="window.open('https://mariomario6464.itch.io/ju-mp/devlog/974967/dev-log-1', '_blank')">Read Devlog #1</button>
+<section id="demo">
+  <h2>Dev Log + Demo</h2>
+  <p>Check out the latest updates and development logs below.</p>
+  <button class="btn" onclick="window.open('https://mariomario6464.itch.io/ju-mp/devlog/974967/dev-log-1', '_blank')">?? Read Dev Log</button>
 </section>
 
 <footer>
