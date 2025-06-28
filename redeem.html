@@ -2,152 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Redeem Code – JU_MP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JU_MP Code Redeem</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #2b0080;
+      font-family: 'Arial', sans-serif;
+      background-color: #1a1a1a;
       color: #f0f0f0;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 3rem 1rem;
-      min-height: 100vh;
+      height: 100vh;
+      flex-direction: column;
     }
-
     h1 {
-      font-size: 2.5rem;
       color: #00aaff;
-      margin-bottom: 0.5rem;
     }
-
-    p {
-      font-size: 1.1rem;
-      max-width: 600px;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    input[type="text"] {
+    input, button {
       padding: 0.75rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: none;
-      width: 260px;
-      text-align: center;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    button {
-      padding: 0.75rem 1.5rem;
-      font-weight: 700;
-      background: #00aaff;
-      border: none;
-      border-radius: 25px;
-      color: #0f0f0f;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background: #0088cc;
-    }
-
-    #result {
       margin-top: 1rem;
-      font-weight: 600;
-      color: #ffff66;
+      font-size: 1rem;
     }
-
-    #download-section {
-      margin-top: 2rem;
-      display: none;
-      text-align: center;
+    input {
+      width: 300px;
+      border: none;
+      border-radius: 4px;
     }
-
-    #download-section a {
-      background: #00aaff;
-      color: #0f0f0f;
-      padding: 0.75rem 2rem;
-      border-radius: 25px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: background 0.3s ease;
+    button {
+      background-color: #00aaff;
+      color: black;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
     }
-
-    #download-section a:hover {
-      background: #0088cc;
+    button:hover {
+      background-color: #0077cc;
     }
-
-    footer {
-      margin-top: auto;
-      padding: 1rem;
-      text-align: center;
-      font-size: 0.875rem;
-      color: #999;
+    #result {
+      margin-top: 1.5rem;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-
-  <h1>🎁 Redeem Your Code</h1>
-  <p>Got a special code from the JU_MP Collector's Edition or merch? Enter it below to unlock your bonus content or digital download.</p>
-
-  <input type="text" id="codeInput" placeholder="ENTER CODE" maxlength="15" />
-  <br />
-  <button onclick="checkCode()">Submit Code</button>
-
-  <p id="result"></p>
-
-  <div id="download-section">
-    <h2>✅ Code Accepted!</h2>
-    <p>Your reward is ready:</p>
-    <a href="https://mariomario6464.itch.io/ju-mp-phsical-eddtion-free-page" target="_blank">Download JU_MP</a>
-  </div>
-
-  <footer>&copy; 2025 JU_MP Game by You + ChatGPT</footer>
+  <h1>Redeem Your JU_MP Code</h1>
+  <input type="text" id="codeInput" placeholder="Enter your code here" />
+  <button onclick="redeemCode()">Redeem</button>
+  <div id="result"></div>
 
   <script>
-    // Add your real codes here!
-    const validCodes = ["JU001", "JU002", "HAMBURGER30", "VIPACCESS"];
+    const validCodes = [
+      "JU_MP-0J8O", "JU_MP-0NDP", "JU_MP-0TEX", "JU_MP-18HQ", "JU_MP-1AHC", "JU_MP-1SAL",
+      "JU_MP-1YE5", "JU_MP-2IJX", "JU_MP-34K4", "JU_MP-3B9J", "JU_MP-3KGR", "JU_MP-3KN0",
+      "JU_MP-43EI", "JU_MP-5UMI", "JU_MP-61HJ", "JU_MP-6KXH", "JU_MP-6M8W", "JU_MP-6OS3",
+      "JU_MP-7M5K", "JU_MP-7S7N", "JU_MP-7V6A", "JU_MP-7Z3P", "JU_MP-80HS", "JU_MP-82U8",
+      "JU_MP-88AO", "JU_MP-8WVU", "JU_MP-8YAP", "JU_MP-8ZK5", "JU_MP-91VO", "JU_MP-9GCR",
+      "JU_MP-9QDJ", "JU_MP-A4KK", "JU_MP-AK8R", "JU_MP-AY5Y", "JU_MP-B5EN", "JU_MP-BB3K",
+      "JU_MP-BMAY", "JU_MP-BNUD", "JU_MP-BZ4F", "JU_MP-C1YW", "JU_MP-CF0A", "JU_MP-CJJN",
+      "JU_MP-CW09", "JU_MP-D3N2", "JU_MP-DCE3", "JU_MP-DM59", "JU_MP-DZXP", "JU_MP-E7RK",
+      "JU_MP-ECOY", "JU_MP-EM9N", "JU_MP-F3G7", "JU_MP-F4D6", "JU_MP-F8U6", "JU_MP-FHE7",
+      "JU_MP-FPC1", "JU_MP-FPW2", "JU_MP-FV0S", "JU_MP-G0Z0", "JU_MP-G7BD", "JU_MP-GFGN",
+      "JU_MP-GK1Z", "JU_MP-H1XB", "JU_MP-H82Q", "JU_MP-HHEU", "JU_MP-HW0V", "JU_MP-HZKZ",
+      "JU_MP-I5UE", "JU_MP-IKUO", "JU_MP-IPEI", "JU_MP-IWSA", "JU_MP-JKMT", "JU_MP-JM9X",
+      "JU_MP-JQ76", "JU_MP-K6DA", "JU_MP-KG94", "JU_MP-KU26", "JU_MP-L1ZD", "JU_MP-LAV7",
+      "JU_MP-LH5U", "JU_MP-LKH9", "JU_MP-M1E8", "JU_MP-MCO9", "JU_MP-MI3Y", "JU_MP-MZ0A",
+      "JU_MP-N9ZX", "JU_MP-NBAO", "JU_MP-NDFV", "JU_MP-NWP7", "JU_MP-P1U5", "JU_MP-PACW",
+      "JU_MP-PEHJ", "JU_MP-PK9Y", "JU_MP-PU2C", "JU_MP-Q8O1", "JU_MP-QH1T", "JU_MP-QS34",
+      "JU_MP-R5NJ", "JU_MP-RKDX", "JU_MP-RW8A", "JU_MP-SKYT", "JU_MP-T01J", "JU_MP-TUGF",
+      "JU_MP-V2XY", "JU_MP-WCNM"
+    ];
 
-    const redeemedCodes = new Set();
+    function redeemCode() {
+      const userCode = document.getElementById('codeInput').value.trim().toUpperCase();
+      const resultDiv = document.getElementById('result');
 
-    function checkCode() {
-      const input = document.getElementById("codeInput");
-      const result = document.getElementById("result");
-      const downloadSection = document.getElementById("download-section");
-      const code = input.value.trim().toUpperCase();
-
-      if (!code) {
-        result.textContent = "Please enter a code.";
-        downloadSection.style.display = "none";
-        return;
+      if (validCodes.includes(userCode)) {
+        resultDiv.innerHTML = `✅ Code accepted! Bonus content unlocked.`;
+        resultDiv.style.color = '#00ff00';
+      } else {
+        resultDiv.innerHTML = `❌ Invalid code. Please check and try again.`;
+        resultDiv.style.color = '#ff5555';
       }
-
-      if (!validCodes.includes(code)) {
-        result.textContent = "❌ That code isn’t valid.";
-        downloadSection.style.display = "none";
-        return;
-      }
-
-      if (redeemedCodes.has(code)) {
-        result.textContent = "⚠️ This code was already used.";
-        downloadSection.style.display = "none";
-        return;
-      }
-
-      // All good!
-      redeemedCodes.add(code);
-      result.textContent = "";
-      downloadSection.style.display = "block";
-      input.value = "";
     }
   </script>
-
 </body>
 </html>
+
