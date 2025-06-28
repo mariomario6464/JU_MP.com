@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🍔 SECRET JU_MP BURGER</title>
+  <style>
+    body {
+      margin: 0;
+      background: #1a1a1a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #fff;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+
+    .burger {
+      animation: spin 4s linear infinite;
+      width: 200px;
+      height: auto;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .code {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      color: #ffcc00;
+    }
+  </style>
+</head>
+<body>
+  <img src="burger.gif" alt="Spinning Hamburger" class="burger" />
+  <audio autoplay loop>
+    <source src="hamburger.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+  <div class="code">🍔 Secret Code: <strong>HAMBURGER30</strong></div>
+</body>
+</html>
