@@ -42,6 +42,16 @@
       margin-top: 1.5rem;
       font-weight: bold;
     }
+    #downloadLink {
+      display: none;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: #00ffcc;
+    }
+    #downloadLink a {
+      color: #00ffcc;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -49,6 +59,9 @@
   <input type="text" id="codeInput" placeholder="Enter your code here" />
   <button onclick="redeemCode()">Redeem</button>
   <div id="result"></div>
+  <div id="downloadLink">
+    🎉 <a href="https://mariomario6464.itch.io/ju-mp-phsical-eddtion-free-page" target="_blank">Click here to download your reward</a>
+  </div>
 
   <script>
     const validCodes = [
@@ -75,16 +88,18 @@
     function redeemCode() {
       const userCode = document.getElementById('codeInput').value.trim().toUpperCase();
       const resultDiv = document.getElementById('result');
+      const downloadDiv = document.getElementById('downloadLink');
 
       if (validCodes.includes(userCode)) {
         resultDiv.innerHTML = `✅ Code accepted! Bonus content unlocked.`;
         resultDiv.style.color = '#00ff00';
+        downloadDiv.style.display = 'block';
       } else {
         resultDiv.innerHTML = `❌ Invalid code. Please check and try again.`;
         resultDiv.style.color = '#ff5555';
+        downloadDiv.style.display = 'none';
       }
     }
   </script>
 </body>
 </html>
-
