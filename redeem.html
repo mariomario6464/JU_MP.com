@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Redeem Code – JU_MP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #2b0080;
+      color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #00aaff;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    input[type="text"] {
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      width: 260px;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-weight: 700;
+      background: #00aaff;
+      border: none;
+      border-radius: 25px;
+      color: #0f0f0f;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #0088cc;
+    }
+
+    #result {
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #ffff66;
+    }
+
+    #download-section {
+      margin-top: 2rem;
+      display: none;
+      text-align: center;
+    }
+
+    #download-section a {
+      background: #00aaff;
+      color: #0f0f0f;
+      padding: 0.75rem 2rem;
+      border-radius: 25px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    #download-section a:hover {
+      background: #0088cc;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎁 Redeem Your Code</h1>
+  <p>Got a special code from the JU_MP Collector's Edition or merch? Enter it below to unlock your bonus content or digital download.</p>
+
+  <input type="text" id="codeInput" placeholder="ENTER CODE" maxlength="15" />
+  <br />
+  <button onclick="checkCode()">Submit Code</button>
+
+  <p id="result"></p>
+
+  <div id="download-section">
+    <h2>✅ Code Accepted!</h2>
+    <p>Your reward is ready:</p>
+    <a href="https://mariomario6464.itch.io/ju-mp/download" target="_blank">Download JU_MP</a>
+  </div>
+
+  <footer>&copy; 2025 JU_MP Game by You + ChatGPT</footer>
+
+  <script>
+    // Add your real codes here!
+    const validCodes = ["JU001", "JU002", "HAMBURGER30", "VIPACCESS"];
+
+    const redeemedCodes = new Set();
+
+    function checkCode() {
+      const input = document.getElementById("codeInput");
+      const result = document.getElementById("result");
+      const downloadSection = document.getElementById("download-section");
+      const code = input.value.trim().toUpperCase();
+
+      if (!code) {
+        result.textContent = "Please enter a code.";
+        downloadSection.style.display = "none";
+        return;
+      }
+
+      if (!validCodes.includes(code)) {
+        result.textContent = "❌ That code isn’t valid.";
+        downloadSection.style.display = "none";
+        return;
+      }
+
+      if (redeemedCodes.has(code)) {
+        result.textContent = "⚠️ This code was already used.";
+        downloadSection.style.display = "none";
+        return;
+      }
+
+      // All good!
+      redeemedCodes.add(code);
+      result.textContent = "";
+      downloadSection.style.display = "block";
+      input.value = "";
+    }
+  </script>
+
+</body>
+</html>
