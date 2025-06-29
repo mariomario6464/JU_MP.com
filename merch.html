@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>JU_MP Merch</title>
+  <title>JU_MP EPIK Merch</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -12,54 +12,91 @@
       font-family: 'Poppins', sans-serif;
       text-align: center;
       padding: 2rem;
+      margin: 0;
     }
     h1 {
       color: #00ffcc;
+      margin-bottom: 2rem;
     }
     .merch-item {
-      margin: 2rem auto;
+      margin: 1.5rem auto;
       padding: 1rem;
       background: #1a1a1a;
       border-radius: 10px;
       max-width: 400px;
+      box-shadow: 0 0 10px #00445555;
     }
     .merch-item img {
       width: 100%;
       max-height: 200px;
       object-fit: contain;
       margin-bottom: 1rem;
-    }
-    .locked {
-      opacity: 0.4;
-      filter: grayscale(1);
+      border-radius: 8px;
     }
     .hidden {
       display: none;
+    }
+    .note {
+      font-size: 0.9rem;
+      color: #00ffccaa;
+      margin-top: 0.5rem;
     }
   </style>
 </head>
 <body>
 
-  <h1>🛍️ JU_MP Merch</h1>
+  <h1>🛍️ JU_MP EPIK Merch</h1>
 
-  <!-- Default merch item -->
+  <!-- Default Merch -->
   <div class="merch-item">
     <img src="shirt.png" alt="JU_MP Shirt" />
     <h2>JU_MP Shirt</h2>
     <p>Classic JU_MP tee with the hero on front.</p>
   </div>
 
-  <!-- Hidden Custom Hat -->
+  <div class="merch-item">
+    <img src="stickers.png" alt="JU_MP Stickers" />
+    <h2>JU_MP Stickers</h2>
+    <p>Sticker pack featuring characters and logo.</p>
+  </div>
+
+  <div class="merch-item">
+    <img src="blanket.png" alt="JU_MP Blanket" />
+    <h2>JU_MP Blanket</h2>
+    <p>Cozy blanket with JU_MP themed designs.</p>
+  </div>
+
+  <!-- Unlockable Merch -->
+
   <div id="customHat" class="merch-item hidden">
-    <img src="coolhat.png" alt="JU_MP Hat" />
+    <img src="coolhat.png" alt="Custom JU_MP Hat" />
     <h2>Custom JU_MP Hat</h2>
-    <p>You unlocked this by entering <strong>coolhat10</strong>!</p>
+    <p>Unlocked with code <strong>coolhat10</strong></p>
+  </div>
+
+  <div id="hamburgerNecklace" class="merch-item hidden">
+    <img src="hamburger.png" alt="Hamburger Necklace" />
+    <h2>Hamburger Necklace</h2>
+    <p>Secret item unlocked with code <strong>hamburger30</strong></p>
+  </div>
+
+  <div id="collectorsEdition" class="merch-item hidden">
+    <img src="collectors.png" alt="Collector's Edition Box" />
+    <h2>JU_MP Collector’s Edition</h2>
+    <p>Unlocked by entering a physical edition redeem code.</p>
+    <p class="note">Includes exclusive physical merch & bonus content.</p>
   </div>
 
   <script>
-    // Show special hat if unlocked
+    // Show unlocked merch based on localStorage flags
     if (localStorage.getItem('ju_mp_custom_hat') === 'unlocked') {
       document.getElementById('customHat').classList.remove('hidden');
+    }
+    if (localStorage.getItem('ju_mp_secret_burger') === 'unlocked') {
+      document.getElementById('hamburgerNecklace').classList.remove('hidden');
+    }
+    if (localStorage.getItem('ju_mp_physical_access') === 'true') {
+      document.getElementById('collectorsEdition').classList.remove('hidden');
     }
   </script>
 
