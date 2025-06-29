@@ -2,104 +2,113 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JU_MP Code Redeem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JU_MP Redeem Code</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #1a1a1a;
+      background: #1b0033;
       color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding: 2rem;
+      margin: 0;
     }
     h1 {
       color: #00aaff;
-    }
-    input, button {
-      padding: 0.75rem;
-      margin-top: 1rem;
-      font-size: 1rem;
+      margin-bottom: 1rem;
     }
     input {
-      width: 300px;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 8px;
       border: none;
-      border-radius: 4px;
+      width: 250px;
+      max-width: 90%;
+      margin-bottom: 1rem;
     }
     button {
-      background-color: #00aaff;
-      color: black;
+      background: #00aaff;
       border: none;
-      border-radius: 4px;
+      padding: 0.75rem 1.5rem;
+      color: #0f0f0f;
+      font-weight: 700;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
     button:hover {
-      background-color: #0077cc;
+      background: #0077cc;
     }
-    #result {
-      margin-top: 1.5rem;
-      font-weight: bold;
-    }
-    #downloadLink {
+    .download-link {
+      margin-top: 2rem;
       display: none;
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      color: #00ffcc;
     }
-    #downloadLink a {
-      color: #00ffcc;
-      text-decoration: underline;
+    .download-link a {
+      background: #00ff88;
+      padding: 1rem 2rem;
+      color: #0f0f0f;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 10px;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
+
   <h1>Redeem Your JU_MP Code</h1>
-  <input type="text" id="codeInput" placeholder="Enter your code here" />
+  <input id="codeInput" type="text" placeholder="Enter your code here" autocomplete="off" />
+  <br />
   <button onclick="redeemCode()">Redeem</button>
-  <div id="result"></div>
-  <div id="downloadLink">
-    🎉 <a href="https://mariomario6464.itch.io/ju-mp-phsical-eddtion-free-page" target="_blank">Click here to download your reward</a>
+
+  <div class="download-link" id="downloadSection">
+    <h2>🎉 Thanks for supporting JU_MP!</h2>
+    <a href="https://mariomario6464.itch.io/ju-mp-phsical-eddtion-free-page" target="_blank">Download Bonus Content</a>
   </div>
 
   <script>
-    const validCodes = [
-      "JU_MP-0J8O", "JU_MP-0NDP", "JU_MP-0TEX", "JU_MP-18HQ", "JU_MP-1AHC", "JU_MP-1SAL",
-      "JU_MP-1YE5", "JU_MP-2IJX", "JU_MP-34K4", "JU_MP-3B9J", "JU_MP-3KGR", "JU_MP-3KN0",
-      "JU_MP-43EI", "JU_MP-5UMI", "JU_MP-61HJ", "JU_MP-6KXH", "JU_MP-6M8W", "JU_MP-6OS3",
-      "JU_MP-7M5K", "JU_MP-7S7N", "JU_MP-7V6A", "JU_MP-7Z3P", "JU_MP-80HS", "JU_MP-82U8",
-      "JU_MP-88AO", "JU_MP-8WVU", "JU_MP-8YAP", "JU_MP-8ZK5", "JU_MP-91VO", "JU_MP-9GCR",
-      "JU_MP-9QDJ", "JU_MP-A4KK", "JU_MP-AK8R", "JU_MP-AY5Y", "JU_MP-B5EN", "JU_MP-BB3K",
-      "JU_MP-BMAY", "JU_MP-BNUD", "JU_MP-BZ4F", "JU_MP-C1YW", "JU_MP-CF0A", "JU_MP-CJJN",
-      "JU_MP-CW09", "JU_MP-D3N2", "JU_MP-DCE3", "JU_MP-DM59", "JU_MP-DZXP", "JU_MP-E7RK",
-      "JU_MP-ECOY", "JU_MP-EM9N", "JU_MP-F3G7", "JU_MP-F4D6", "JU_MP-F8U6", "JU_MP-FHE7",
-      "JU_MP-FPC1", "JU_MP-FPW2", "JU_MP-FV0S", "JU_MP-G0Z0", "JU_MP-G7BD", "JU_MP-GFGN",
-      "JU_MP-GK1Z", "JU_MP-H1XB", "JU_MP-H82Q", "JU_MP-HHEU", "JU_MP-HW0V", "JU_MP-HZKZ",
-      "JU_MP-I5UE", "JU_MP-IKUO", "JU_MP-IPEI", "JU_MP-IWSA", "JU_MP-JKMT", "JU_MP-JM9X",
-      "JU_MP-JQ76", "JU_MP-K6DA", "JU_MP-KG94", "JU_MP-KU26", "JU_MP-L1ZD", "JU_MP-LAV7",
-      "JU_MP-LH5U", "JU_MP-LKH9", "JU_MP-M1E8", "JU_MP-MCO9", "JU_MP-MI3Y", "JU_MP-MZ0A",
-      "JU_MP-N9ZX", "JU_MP-NBAO", "JU_MP-NDFV", "JU_MP-NWP7", "JU_MP-P1U5", "JU_MP-PACW",
-      "JU_MP-PEHJ", "JU_MP-PK9Y", "JU_MP-PU2C", "JU_MP-Q8O1", "JU_MP-QH1T", "JU_MP-QS34",
-      "JU_MP-R5NJ", "JU_MP-RKDX", "JU_MP-RW8A", "JU_MP-SKYT", "JU_MP-T01J", "JU_MP-TUGF",
-      "JU_MP-V2XY", "JU_MP-WCNM","HAMBURGER30"
-    ];
+    const physicalCodes = new Set([
+      'JU_SZ3F48','JU_SPYHXQ','JU_L5P5NM','JU_91JKXI','JU_90RLC5','JU_53H8OH','JU_F0OCLW','JU_3ARG4M','JU_N94X20','JU_RF62U4',
+      'JU_U07EIP','JU_P2EHCK','JU_I077WG','JU_L5OD1O','JU_IYIQE4','JU_ULGOK2','JU_I65FFE','JU_AJYHZK','JU_SLIJPM','JU_261H0P',
+      'JU_A2P528','JU_S259DA','JU_JLXTH8','JU_IE091V','JU_2UEWHN','JU_PB90QQ','JU_OXAY8A','JU_P0Y0X6','JU_OVMYE8','JU_216TCM',
+      'JU_O53JC2','JU_V8C2Q9','JU_MKMKJA','JU_ISIOYA','JU_9O64AL','JU_R16P87','JU_8LY5A4','JU_0B70F4','JU_RNTZFE','JU_DBMXIL',
+      'JU_6P0C1K','JU_2ED0HC','JU_GZYX32','JU_XXA11Y','JU_IMWIU0','JU_GKSVFV','JU_453SOV','JU_K9N0OQ','JU_9R94F8','JU_YNDGDX',
+      'JU_FLN0AT','JU_C2PB33','JU_R7YV5J','JU_MM44JX','JU_174HVW','JU_LUL710','JU_S4CPH7','JU_OIMXQA','JU_T6OAQL','JU_BNVDMT',
+      'JU_NL9Z03','JU_1FMXGT','JU_YE11E2','JU_BUV0HC','JU_P91C4Z','JU_1XRA8W','JU_XDJCZS','JU_EN4PI3','JU_D4XWXY','JU_9AF3AX',
+      'JU_6VGMH1','JU_7O8ESA','JU_J50W3V','JU_6TD474','JU_SWVQ24','JU_UNGJ30','JU_Z1GI7Q','JU_LS1EH7','JU_9W4924','JU_EM15RA',
+      'JU_E4V265','JU_ILV5DK','JU_B8TXR5','JU_0BTEMH','JU_A9TOU8','JU_GUDX8B','JU_XYZ8UA','JU_D7EVEQ','JU_MMH9LF','JU_QC6B1P',
+      'JU_MIRKP6','JU_4FK5VP','JU_D65PPF','JU_UYE12O','JU_3VGBYN','JU_PSWVRD','JU_UNOTAD','JU_J2H3IA','JU_GAJO0N','JU_JQR1XI'
+    ]);
 
     function redeemCode() {
-      const userCode = document.getElementById('codeInput').value.trim().toUpperCase();
-      const resultDiv = document.getElementById('result');
-      const downloadDiv = document.getElementById('downloadLink');
+      const code = document.getElementById('codeInput').value.trim().toUpperCase();
+      const dlSection = document.getElementById('downloadSection');
 
-      if (validCodes.includes(userCode)) {
-        resultDiv.innerHTML = `✅ Code accepted! Bonus content unlocked.`;
-        resultDiv.style.color = '#00ff00';
-        downloadDiv.style.display = 'block';
+      if (code === 'COOLHAT10') {
+        localStorage.setItem('ju_mp_custom_hat', 'unlocked');
+        alert('🎩 You unlocked the Custom JU_MP Hat!');
+      } else if (code === 'HAMBURGER30') {
+        localStorage.setItem('ju_mp_secret_burger', 'unlocked');
+        alert('🍔 You unlocked the Secret Hamburger!');
+      } else if (physicalCodes.has(code)) {
+        localStorage.setItem('ju_mp_physical_access', 'true');
+        dlSection.style.display = 'block';
+        alert('✅ Physical Edition verified! You unlocked bonus content.');
       } else {
-        resultDiv.innerHTML = `❌ Invalid code. Please check and try again.`;
-        resultDiv.style.color = '#ff5555';
-        downloadDiv.style.display = 'none';
+        alert('❌ Invalid code. Try again.');
       }
+
+      document.getElementById('codeInput').value = '';
     }
+
+    // Auto-show download if code was already redeemed
+    window.onload = () => {
+      if (localStorage.getItem('ju_mp_physical_access') === 'true') {
+        document.getElementById('downloadSection').style.display = 'block';
+      }
+    };
   </script>
+
 </body>
 </html>
